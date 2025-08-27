@@ -2,46 +2,67 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>キャラセリフ流し</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャラセリフウィジェット</title>
 <style>
-  body {
-    margin:0; padding:0;
-    background: transparent;
+  body { margin:0; font-family:sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; background:#222; }
+
+  #widget {
+    width: 90%;
+    max-width: 1200px;   /* 横長 */
+    height: 150px;
     overflow: hidden;
-    font-family: sans-serif;
-  }
-
-  .line {
-    position: absolute;
-    white-space: pre-line; /* 改行を有効に */
-    padding: 12px 20px;
+    position: relative;
     border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    animation: scroll 15s linear infinite;
-    opacity: 0.85;
-    color: #ff6666; /* キャラカラー */
-    background: rgba(0,0,0,0.2);
+    background: #111;
+    color: #fff;
+    padding: 10px 20px;
   }
 
-  @keyframes scroll {
-    0% { left: 100%; }
-    100% { left: -100%; }
+  .block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    white-space: pre-line; /* 改行を保持 */
+    font-size: 18px;
+    line-height: 1.5;
+    display: none;
+    box-sizing: border-box;
   }
 </style>
 </head>
 <body>
 
-<div class="line" style="top:20px;">
-月は狂気を照らす。
-夜は終わらない。
-星は沈黙している。
+<div id="widget">
+  <div class="block" style="color:#FF4444">
+「セリフ1」
+「セリフ2」
+「セリフ3」
+  </div>
+  <div class="block" style="color:#44FF44">
+「セリフ4」
+「セリフ5」
+「セリフ6」
+  </div>
+  <div class="block" style="color:#4444FF">
+「セリフ7」
+「セリフ8」
+「セリフ9」
+  </div>
 </div>
 
-<div class="line" style="top:100px; animation-delay: 5s; color:#66ccff;">
-光は闇を裂く。
-静寂が支配する。
-</div>
+<script>
+const blocks = document.querySelectorAll(".block");
+let current = 0;
+
+function showNext() {
+  blocks.forEach((b, i) => b.style.display = (i === current ? "block" : "none"));
+  current = (current + 1) % blocks.length;
+}
+
+showNext();
+setInterval(showNext, 4000); // 4秒ごとに切り替え
+</script>
 
 </body>
 </html>
