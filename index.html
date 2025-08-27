@@ -2,67 +2,71 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>キャラセリフウィジェット</title>
+<title>キャラクターセリフスクロール</title>
 <style>
-  body { margin:0; font-family:sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; background:#222; }
-
-  #widget {
-    width: 90%;
-    max-width: 1200px;   /* 横長 */
-    height: 150px;
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: transparent; /* 背景透明 */
+    font-family: sans-serif;
     overflow: hidden;
-    position: relative;
-    border-radius: 12px;
-    background: #111;
-    color: #fff;
-    padding: 10px 20px;
+    width: 100vw;
+    height: 150px; /* 高さはコンパクトに */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
+  .block-container {
+    width: 90%;
+    height: 100%;
+    position: relative;
+  }
   .block {
     position: absolute;
     width: 100%;
     height: 100%;
-    white-space: pre-line; /* 改行を保持 */
-    font-size: 18px;
-    line-height: 1.5;
-    display: none;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding-left: 10px;
+    font-size: 1.1em;
+    white-space: pre-line; /* 複数行を保持 */
+  }
+  .block.active {
+    opacity: 1;
   }
 </style>
 </head>
 <body>
-
-<div id="widget">
-  <div class="block" style="color:#FF4444">
-「セリフ1」
-「セリフ2」
-「セリフ3」
+<div class="block-container">
+  <div class="block active" style="color:#FF5555;">
+    「セリフ1」  
+    「セリフ2」  
+    「セリフ3」
   </div>
-  <div class="block" style="color:#44FF44">
-「セリフ4」
-「セリフ5」
-「セリフ6」
+  <div class="block" style="color:#55FF55;">
+    「別のセリフ1」  
+    「別のセリフ2」  
+    「別のセリフ3」
   </div>
-  <div class="block" style="color:#4444FF">
-「セリフ7」
-「セリフ8」
-「セリフ9」
+  <div class="block" style="color:#5555FF;">
+    「さらに別のセリフ1」  
+    「さらに別のセリフ2」  
+    「さらに別のセリフ3」
   </div>
 </div>
 
 <script>
-const blocks = document.querySelectorAll(".block");
-let current = 0;
-
-function showNext() {
-  blocks.forEach((b, i) => b.style.display = (i === current ? "block" : "none"));
-  current = (current + 1) % blocks.length;
-}
-
-showNext();
-setInterval(showNext, 4000); // 4秒ごとに切り替え
+  const blocks = document.querySelectorAll('.block');
+  let current = 0;
+  setInterval(() => {
+    blocks[current].classList.remove('active');
+    current = (current + 1) % blocks.length;
+    blocks[current].classList.add('active');
+  }, 2000); // 2秒ごとに切り替え
 </script>
-
 </body>
 </html>
