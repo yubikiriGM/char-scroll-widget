@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>キャラセリフ流し</title>
-  <style>
-    body {
-      background: #111;
-      overflow: hidden;
-      font-family: sans-serif;
-    }
-    .line {
-      position: absolute;
-      white-space: nowrap;
-      padding: 8px 16px;
-      border-radius: 12px;
-      font-size: 18px;
-      font-weight: bold;
-      animation: scroll 12s linear infinite;
-      opacity: 0.85;
-    }
-    /* キャラごとの色 */
-    .sarerguu { background: rgba(200,100,255,0.2); border:2px solid #c864ff; color:#c864ff; }
-    .noir { background: rgba(100,200,255,0.2); border:2px solid #64c8ff; color:#64c8ff; }
-    .rouge { background: rgba(255,80,80,0.2); border:2px solid #ff5050; color:#ff5050; }
+<meta charset="UTF-8">
+<title>キャラセリフ流し</title>
+<style>
+  body {
+    margin:0; padding:0;
+    background: transparent;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
 
-    @keyframes scroll {
-      0% { transform: translateX(100vw); }
-      100% { transform: translateX(-100%); }
-    }
-  </style>
+  .line {
+    position: absolute;
+    white-space: pre-line; /* 改行を有効に */
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    animation: scroll 15s linear infinite;
+    opacity: 0.85;
+    color: #ff6666; /* キャラカラー */
+    background: rgba(0,0,0,0.2);
+  }
+
+  @keyframes scroll {
+    0% { left: 100%; }
+    100% { left: -100%; }
+  }
+</style>
 </head>
 <body>
 
-  <div class="line sarerguu" style="top:20px;">月は狂気を照らす。</div>
-  <div class="line noir" style="top:80px;">夜は終わらない。</div>
-  <div class="line rouge" style="top:140px;">血のように赤い夢を見ろ。</div>
+<div class="line" style="top:20px;">
+月は狂気を照らす。
+夜は終わらない。
+星は沈黙している。
+</div>
+
+<div class="line" style="top:100px; animation-delay: 5s; color:#66ccff;">
+光は闇を裂く。
+静寂が支配する。
+</div>
 
 </body>
 </html>
