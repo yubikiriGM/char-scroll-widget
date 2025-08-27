@@ -7,30 +7,30 @@
   html, body {
     margin: 0;
     padding: 0;
-    background: transparent;
+    background: #cccccc; /* 背景灰色 */
     overflow: hidden;
   }
 
   #container {
     position: relative;
-    width: 100%;     /* 埋め込み幅に合わせる */
-    height: 120px;   /* 高さは5行程度 */
+    width: 100%;
+    height: 120px;   /* 5行程度 */
     overflow: hidden;
   }
 
   .block {
-    color: #ff4081;      /* キャラカラー */
+    color: #ff4081;
     font-size: 16px;
-    text-align: center;
+    text-align: left;   /* 左寄せ */
     position: absolute;
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease;
-    margin: 0;           /* 余白なし */
-    padding: 0;          /* 内側余白なし */
-    line-height: 1.2;    /* 行間少しだけ確保 */
+    margin: 0;
+    padding-left: 10px; /* 左に余白 */
+    line-height: 1.2;
     white-space: pre-line;
-    letter-spacing: 0.05em; 
+    letter-spacing: 0.05em;
   }
 </style>
 </head>
@@ -64,7 +64,7 @@
   setInterval(() => {
     current = (current + 1) % blocks.length;
     showBlock(current);
-  }, 2000);  // 2秒で切り替え
+  }, 2000);  // 2秒切り替え
 </script>
 </body>
 </html>
