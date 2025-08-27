@@ -7,14 +7,14 @@
   html, body {
     margin: 0;
     padding: 0;
-    background: #cccccc; /* 背景灰色 */
+    background: #F8F8F7; /* 背景灰色 */
     overflow: hidden;
   }
 
   #container {
     position: relative;
     width: 100%;
-    height: 120px;   /* 5行程度 */
+    height: 50px;   /* 5行程度 */
     overflow: hidden;
   }
 
@@ -64,7 +64,7 @@
   setInterval(() => {
     current = (current + 1) % blocks.length;
     showBlock(current);
-  }, 2000);  // 2秒切り替え
+  }, 3500);  // 3.5秒切り替え
 </script>
 </body>
 </html>
